@@ -1,0 +1,17 @@
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\bin\Debug\net6.0-windows\Simulación Scheduler.exe
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\bin\Debug\net6.0-windows\Simulación Scheduler.deps.json
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\bin\Debug\net6.0-windows\Simulación Scheduler.runtimeconfig.json
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\bin\Debug\net6.0-windows\Simulación Scheduler.dll
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\bin\Debug\net6.0-windows\Simulación Scheduler.pdb
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.csproj.AssemblyReference.cache
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación_Scheduler.Scheduler.resources
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.csproj.GenerateResource.cache
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.AssemblyInfoInputs.cache
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.AssemblyInfo.cs
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.csproj.CoreCompileInputs.cache
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.dll
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\refint\Simulación Scheduler.dll
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.pdb
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\Simulación Scheduler.genruntimeconfig.cache
+C:\Users\Elkin\OneDrive\Documentos\Proyectos\Planificador_Scheduler\Simulación Scheduler\Simulación Scheduler\obj\Debug\net6.0-windows\ref\Simulación Scheduler.dll
