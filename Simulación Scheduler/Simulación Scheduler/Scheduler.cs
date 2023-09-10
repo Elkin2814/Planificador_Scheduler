@@ -111,7 +111,7 @@ namespace Simulación_Scheduler
             progressBar = progressBar1;
 
             Label lblEstado1 = new Label();
-            lblEstado1.Text = "";
+            lblEstado1.Text = "Preparado";
             lblEstado1.Visible = false;
             lblEstado1.Dock = DockStyle.Right;
             lblEstado1.ForeColor = Color.White;
@@ -180,12 +180,14 @@ namespace Simulación_Scheduler
         }
 
 
-        private int procesoActivoIndex = -1; // Variable para rastrear el proceso activo actual
+        private int procesoActivoIndex = -1; 
         private Random random = new Random();
+
         private void timerBarra_Tick(object sender, EventArgs e)
         {
             foreach (Scheduler proceso in procesos)
             {
+                int probabilidad = random.Next(1, 101);
                 proceso.lblEstado.Visible = true;
                 ProgressBar progressBarActual = proceso.progressBar;
 
@@ -196,9 +198,7 @@ namespace Simulación_Scheduler
                 }
                 else if (procesoActivoIndex == procesos.IndexOf(proceso))
                 {
-                    //probabilidadEstado(proceso.lblEstado);
-                    int probabilidad = random.Next(1, 101);
-                    
+                    proceso.lblEstado.Text = "Activo";
 
                     if (probabilidad < 90)
                     {
@@ -211,43 +211,118 @@ namespace Simulación_Scheduler
                     }
                     else
                     {
-                        proceso.lblEstado.Text = "Finalizado";
-                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count; 
+                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count;
                     }
                     progressBarActual.Increment(2);
 
-
-
                     if (progressBarActual.Value == 100)
                     {
+                        proceso.lblEstado.Text = "Finalizado";
                         proceso.lblPorcentaje.Text = "100 %";
+
+                        int siguienteProcesoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                        while (procesos[siguienteProcesoIndex].lblEstado.Text != "Preparado")
+                        {
+                            siguienteProcesoIndex = (siguienteProcesoIndex + 1) % procesos.Count;
+                        }
+
+                        procesoActivoIndex = siguienteProcesoIndex;
+                        procesos[procesoActivoIndex].Text = "Activo";
                     }
                     else
                     {
                         proceso.lblPorcentaje.Text = progressBarActual.Value + " %";
                     }
 
-                    /*proceso.lblEstado.Visible = true;
-
-                    // Encuentra el próximo proceso que está en estado "preparado" y lo vuelve activo
-                    int siguienteProcesoIndex = (procesoActivoIndex + 1) % procesos.Count;
-                    while (procesos[siguienteProcesoIndex].lblEstado.Text != "Preparado")
-                    {
-                        siguienteProcesoIndex = (siguienteProcesoIndex + 1) % procesos.Count;
-                    }
-
-                    procesoActivoIndex = siguienteProcesoIndex;
-                    procesos[procesoActivoIndex].Text = "Activo";*/
-                
-                    //proceso.lblPorcentaje.Text = progressBarActual.Value + " %";
                 }
                 else
                 {
-                    // Otros procesos se mantienen en estado "preparado"
                     proceso.lblEstado.Text = "Preparado";
                 }
             }
         }
+
+        private Dictionary<Scheduler, int> tiempoBloqueo = new Dictionary<Scheduler, int>(); // Almacena el tiempo de bloqueo para cada proceso
+
+        private void wtimerBarra_Tick(object sender, EventArgs e)
+        {
+            foreach (Scheduler proceso in procesos)
+            {
+                int probabilidad = random.Next(1, 101);
+                proceso.lblEstado.Visible = true;
+                ProgressBar progressBarActual = proceso.progressBar;
+
+                if (procesoActivoIndex == -1)
+                {
+                    proceso.lblEstado.Text = "Activo";
+                    procesoActivoIndex = 0;
+                }
+                else if (procesoActivoIndex == procesos.IndexOf(proceso))
+                {
+                    proceso.lblEstado.Text = "Activo";
+
+                    if (probabilidad < 90)
+                    {
+                        //proceso.lblEstado.Text = "Preparado";
+                    }
+                    else if (probabilidad >= 90 && probabilidad < 97)
+                    {
+                        proceso.lblEstado.Text = "Bloqueado";
+
+                        // Incrementa el tiempo de bloqueo para este proceso
+                        if (!tiempoBloqueo.ContainsKey(proceso))
+                        {
+                            tiempoBloqueo[proceso] = 1;
+                        }
+                        else
+                        {
+                            tiempoBloqueo[proceso]++;
+                        }
+
+                        // Comprueba si el proceso ha estado bloqueado el tiempo suficiente
+                        if (tiempoBloqueo[proceso] >= 5)
+                        {
+                            proceso.lblEstado.Text = "Preparado";
+                            tiempoBloqueo.Remove(proceso); // Elimina el registro de tiempo de bloqueo
+                        }
+
+                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                    }
+                    else
+                    {
+                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                    }
+                    progressBarActual.Increment(2);
+
+                    if (progressBarActual.Value == 100)
+                    {
+                        proceso.lblEstado.Text = "Finalizado";
+                        proceso.lblPorcentaje.Text = "100 %";
+
+                        int siguienteProcesoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                        while (procesos[siguienteProcesoIndex].lblEstado.Text != "Preparado")
+                        {
+                            siguienteProcesoIndex = (siguienteProcesoIndex + 1) % procesos.Count;
+                        }
+
+                        procesoActivoIndex = siguienteProcesoIndex;
+                        procesos[procesoActivoIndex].Text = "Activo";
+                    }
+                    else
+                    {
+                        proceso.lblPorcentaje.Text = progressBarActual.Value + " %";
+                    }
+
+                }
+                else
+                {
+                    proceso.lblEstado.Text = "Preparado";
+                }
+            }
+        }
+
+
+
         /*
         private void timerBarra_Tick(object sender, EventArgs e)
         {
