@@ -1,4 +1,5 @@
 using Simulación_Scheduler.Control;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Simulación_Scheduler
@@ -33,7 +34,7 @@ namespace Simulación_Scheduler
         public void setLabelPorcentaje(Label lblProcentaje) { this.lblPorcentaje = lblProcentaje; }
 
 
-        
+
         public Scheduler()
         {
             InitializeComponent();
@@ -145,26 +146,127 @@ namespace Simulación_Scheduler
 
         private void ejecutarProceso()
         {
-            
-                while (procesos[indiceProceso].progressBar.Value < 100)
-                {
-                    //procesos[indiceProceso].progressBar.Increment(1);
-                }
-            
+
+            while (procesos[indiceProceso].progressBar.Value < 100)
+            {
+                //procesos[indiceProceso].progressBar.Increment(1);
+            }
+
         }
 
-        public void probabilidadEstado()
+        public void probabilidadEstado(Label estado)
         {
+            Random random = new Random();
+
+            // Generar un número aleatorio entre 1 y 100 (incluyendo 1 y 100)
+            int numAleatorio = random.Next(1, 101);
+
+            estado.Text = "Activo";
+            estado.Visible = true;
+
+            if (numAleatorio < 90)
+            {
+                estado.Text = "Preparado"; // Probabilidad del 90%
+            }
+            else if (numAleatorio < 97 && numAleatorio >= 90)
+            {
+                estado.Text = "Bloqueado"; // Probabilidad del 7%
+            }
+            else
+            {
+                estado.Text = "Terminado"; // Probabilidad del 3%
+            }
 
         }
 
 
+        private int procesoActivoIndex = -1; // Variable para rastrear el proceso activo actual
+        private Random random = new Random();
         private void timerBarra_Tick(object sender, EventArgs e)
         {
+            foreach (Scheduler proceso in procesos)
+            {
+                proceso.lblEstado.Visible = true;
+                ProgressBar progressBarActual = proceso.progressBar;
+
+                if (procesoActivoIndex == -1)
+                {
+                    proceso.lblEstado.Text = "Activo";
+                    procesoActivoIndex = 0;
+                }
+                else if (procesoActivoIndex == procesos.IndexOf(proceso))
+                {
+                    //probabilidadEstado(proceso.lblEstado);
+                    int probabilidad = random.Next(1, 101);
+                    
+
+                    if (probabilidad < 90)
+                    {
+                        //proceso.lblEstado.Text = "Preparado";
+                    }
+                    else if (probabilidad >= 90 && probabilidad < 97)
+                    {
+                        proceso.lblEstado.Text = "Bloqueado";
+                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                    }
+                    else
+                    {
+                        proceso.lblEstado.Text = "Finalizado";
+                        procesoActivoIndex = (procesoActivoIndex + 1) % procesos.Count; 
+                    }
+                    progressBarActual.Increment(2);
+
+
+
+                    if (progressBarActual.Value == 100)
+                    {
+                        proceso.lblPorcentaje.Text = "100 %";
+                    }
+                    else
+                    {
+                        proceso.lblPorcentaje.Text = progressBarActual.Value + " %";
+                    }
+
+                    /*proceso.lblEstado.Visible = true;
+
+                    // Encuentra el próximo proceso que está en estado "preparado" y lo vuelve activo
+                    int siguienteProcesoIndex = (procesoActivoIndex + 1) % procesos.Count;
+                    while (procesos[siguienteProcesoIndex].lblEstado.Text != "Preparado")
+                    {
+                        siguienteProcesoIndex = (siguienteProcesoIndex + 1) % procesos.Count;
+                    }
+
+                    procesoActivoIndex = siguienteProcesoIndex;
+                    procesos[procesoActivoIndex].Text = "Activo";*/
+                
+                    //proceso.lblPorcentaje.Text = progressBarActual.Value + " %";
+                }
+                else
+                {
+                    // Otros procesos se mantienen en estado "preparado"
+                    proceso.lblEstado.Text = "Preparado";
+                }
+            }
+        }
+        /*
+        private void timerBarra_Tick(object sender, EventArgs e)
+        {
+            
             if (indiceProceso < procesos.Count)
             {
                 Scheduler proceso = procesos[indiceProceso];
                 ProgressBar progressBarActual = procesos[indiceProceso].progressBar;
+
+                if (indiceProceso == 0)
+                {
+                    proceso.lblEstado.Text = "Activo";
+                    proceso.lblEstado.Visible = true;
+                }
+                else
+                {
+                    proceso.lblEstado.Text = "Preparado";
+                }
+
                 procesos[indiceProceso].progressBar.Increment(2);
 
                 if (progressBarActual.Value == 100)
@@ -219,6 +321,5 @@ namespace Simulación_Scheduler
             
             */
 
-        }
-}
+    }
 }

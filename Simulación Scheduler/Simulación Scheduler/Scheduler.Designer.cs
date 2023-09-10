@@ -104,6 +104,7 @@
             // 
             // panelProcesos
             // 
+            panelProcesos.AutoScroll = true;
             panelProcesos.Dock = DockStyle.Fill;
             panelProcesos.Location = new Point(0, 0);
             panelProcesos.Name = "panelProcesos";
