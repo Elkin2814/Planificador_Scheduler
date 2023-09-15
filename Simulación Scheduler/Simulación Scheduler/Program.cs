@@ -1,3 +1,6 @@
+using Simulación_Scheduler.Control;
+using Simulación_Scheduler.GUI;
+
 namespace Simulación_Scheduler
 {
     internal static class Program
@@ -8,10 +11,9 @@ namespace Simulación_Scheduler
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Scheduler());
+            
         }
     }
 }

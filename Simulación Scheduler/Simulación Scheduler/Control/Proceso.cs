@@ -8,40 +8,37 @@ namespace Simulación_Scheduler.Control
 {
     internal class Proceso
     {
-        private int ID;
+        private int idProceso;
         private string estado;
-        private string nombre;
-        private int tiempoLlegada;
-        private int tiempoEjecucion;
-        private int prioridad;
+        private string tiempoLlegada;
+        private string tiempoEjecucion;
+        private string prioridad;
 
-        public Proceso(int id, string nombre, int tiempoLlegada, int tiempoEjecucion, int prioridad)
+        public Proceso(int idProceso)
         {
-            this.ID = id;
-            this.nombre = nombre;
-            this.tiempoLlegada = tiempoLlegada;
+            this.idProceso = idProceso;
+            /*this.tiempoLlegada = tiempoLlegada;
             this.tiempoEjecucion = tiempoEjecucion;
-            this.prioridad = prioridad;
-            this.estado = "Listo";
+            this.prioridad = prioridad;*/
+            this.estado = "Preparado";
         }
 
-        public int getId() { return ID; }
-        public void setId(int id) { ID = id;}
+        public Proceso() { }
+
+        public int getId() { return idProceso; }
+        public void setId(int idProceso) { this.idProceso = idProceso; }
 
         public string getEstado() {  return estado; }
         public void setEstado(string estado) { this.estado = estado; }
 
-        public string getNombre() { return nombre; }
-        public void setNombre(string nombre) { this.nombre = nombre; }
+        public string getTiempoLlegada() {  return tiempoLlegada; }
+        public void setTiempoLlegada(string tiempoLlegada) { this.tiempoLlegada = tiempoLlegada; }
 
-        public int getTiempoLlegada() {  return tiempoLlegada; }
-        public void setTiempoLlegada(int tiempoLlegada) { this.tiempoLlegada = tiempoLlegada; }
+        public string getTiempoEjecucion() { return tiempoEjecucion; }
+        public void setTiempoEjecucion(string tiempoEjecucion) { this.tiempoEjecucion = tiempoEjecucion; }
 
-        public int getTiempoEjecucion() { return tiempoEjecucion; }
-        public void setTiempoEjecucion(int tiempoEjecucion) { this.tiempoEjecucion = tiempoEjecucion; }
-
-        public int getPrioridad() { return prioridad; }
-        public void setPrioridad(int prioridad) { this.prioridad = prioridad; }
+        public string getPrioridad() { return prioridad; }
+        public void setPrioridad(string prioridad) { this.prioridad = prioridad; }
 
     }
 
