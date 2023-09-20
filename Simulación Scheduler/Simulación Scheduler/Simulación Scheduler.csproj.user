@@ -4,6 +4,9 @@
     <Compile Update="GUI\Planificador.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\VistaProcesador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Scheduler.cs">
       <SubType>Form</SubType>
     </Compile>

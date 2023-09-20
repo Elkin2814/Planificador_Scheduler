@@ -12,7 +12,7 @@ namespace Simulación_Scheduler
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Scheduler());
+            Application.Run(new Planificador());
             
         }
     }

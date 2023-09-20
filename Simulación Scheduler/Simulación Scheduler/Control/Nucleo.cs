@@ -11,11 +11,15 @@ namespace Simulación_Scheduler.Control
     {
         private int idNucleo;
         private List<Proceso> lista;
-        public Nucleo(int idNucleo, List<Proceso> lista) {
+        private FlowLayoutPanel flowLayoutPanel;
+
+        public Nucleo() { }
+        public Nucleo(int idNucleo, List<Proceso> lista, FlowLayoutPanel flowLayoutPanel) {
             this.idNucleo = idNucleo;
             this.lista = lista;
+            this.flowLayoutPanel = flowLayoutPanel;
         }
-        public List<Proceso> getListaProcesos() {return lista; }
+        
         public int getIdNucleo()
         {
             return idNucleo;
@@ -26,11 +30,22 @@ namespace Simulación_Scheduler.Control
             this.idNucleo=idNucleo;
         }
 
+        public List<Proceso> getListaProcesos() { return lista; }
+
         public void setListaProcesos(List<Proceso> lista) { this.lista = lista; }
+
+        public FlowLayoutPanel getFlowLayoutPanel() {  return flowLayoutPanel; }
+
+        public void setFlowLayoutPanel(FlowLayoutPanel flowLayoutPanel) { this.flowLayoutPanel = flowLayoutPanel;}
 
         public void addProceso(Proceso proceso)
         {
             lista.Add(proceso);
+        }
+
+        public void addProceso_Nucleo(Proceso proceso, int idNucleo)
+        {
+
         }
 
         public void moverProceso(int indice)

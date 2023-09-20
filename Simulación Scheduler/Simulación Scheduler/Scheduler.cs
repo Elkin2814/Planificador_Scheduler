@@ -30,12 +30,13 @@ namespace Simulación_Scheduler
         public ProgressBar getProgressBar() { return progressBar; }
         public void setProgressBar(ProgressBar progressBar) { this.progressBar = progressBar; }
 
-        public Label getLabelEstado() { return lblEstado; }
-        public void setLabelEstado(Label lblEstado) { this.lblEstado = lblEstado; }
-
         public Label getLabelPorcentaje() { return lblPorcentaje; }
         public void setLabelPorcentaje(Label lblProcentaje) { this.lblPorcentaje = lblProcentaje; }
 
+        public Label getLabelEstado() { return lblEstado; }
+        public void setLabelEstado(Label lblEstado) { this.lblEstado = lblEstado; }
+
+        
 
 
         public Scheduler()
